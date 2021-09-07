@@ -4,7 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:getx/controllers/countController.dart';
 import 'package:getx/controllers/sumController.dart';
 import 'package:getx/controllers/userController.dart';
-import 'package:getx/screens/ApiTest.dart';
 import 'package:getx/screens/new.dart';
 
 class First extends StatefulWidget {
@@ -127,7 +126,7 @@ class _FirstState extends State<First> {
               ElevatedButton(
                 child: Text('Api Call'),
                 onPressed: () {
-                  Get.to(() => ApiCall());
+                  Get.toNamed("/getAddress?lat=30.704649&long=76.717873");
                 },
               ),
               SizedBox(

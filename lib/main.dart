@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:getx/screens/ApiTest.dart';
 import 'package:getx/screens/FakeCart.dart';
 import 'package:getx/screens/Other%20Functions.dart';
 import 'package:getx/screens/cartItems.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/second", page: () => Second()),
         GetPage(name: "/other", page: () => Others()),
         GetPage(name: "/new", page: () => NewPage()),
+        GetPage(name: "/getAddress", page: () => ApiCall()),
         GetPage(
             name: "/cart",
             page: () => CartItems(),

@@ -20,7 +20,14 @@ class _ApiCallState extends State<ApiCall> {
   @override
   void initState() {
     super.initState();
-    getAddress(lat, long);
+    if (Get.parameters["lat"] != null && Get.parameters["long"] != null) {
+      setState(() {
+        lat = Get.parameters["lat"] ?? "30.704649";
+        long = Get.parameters["long"] ?? "30.704649";
+      });
+      getAddress(Get.parameters["lat"] ?? "30.704649",
+          Get.parameters["long"] ?? "30.704649");
+    }
   }
 
   getAddress(lat, long) async {
