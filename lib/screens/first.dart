@@ -9,6 +9,7 @@ import 'package:getx/screens/second.dart';
 
 class First extends StatelessWidget {
   final CountController countController = Get.put(CountController());
+  final UserController userController = Get.put(UserController());
   final NewController newController = Get.put(NewController());
   @override
   Widget build(BuildContext context) {
