@@ -135,8 +135,12 @@ class _FirstState extends State<First> {
               ElevatedButton(
                 child: Text('Named route with parameters'),
                 onPressed: () {
-                  Get.toNamed(
-                      "/new?name=${Get.find<UserController>().user().name}&count=${Get.find<CountController>().count}");
+                  try {
+                    Get.toNamed(
+                        "/new?name=${Get.find<UserController>().user().name}&count=${Get.find<CountController>().count}");
+                  } catch (e) {
+                    Get.toNamed("/new?name=Gaurav&count=0");
+                  }
                 },
               ),
               SizedBox(
