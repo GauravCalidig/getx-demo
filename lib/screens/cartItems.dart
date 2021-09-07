@@ -30,8 +30,6 @@ class CartItems extends StatelessWidget {
                     ],
                   ))
                 : ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
                     itemCount: data.list.length,
                     itemBuilder: (BuildContext context, int index) {
                       var item = data.list[index];

@@ -16,13 +16,12 @@ class _FirstState extends State<First> {
   @override
   void initState() {
     super.initState();
-
     getData();
   }
 
   getData() async {
     var x = await datacount.read("cart");
-    if (x != null) {
+    if (x != null && Get.find<NewController>().list.length == 0) {
       Get.snackbar("Cart Data Loaded", "${x.length} items in Cart");
       Get.find<NewController>().list.addAll(x);
     }
