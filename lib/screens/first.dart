@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:getx/controllers/countController.dart';
 import 'package:getx/controllers/sumController.dart';
 import 'package:getx/controllers/userController.dart';
+import 'package:getx/screens/ApiTest.dart';
 import 'package:getx/screens/new.dart';
 
 class First extends StatefulWidget {
@@ -75,80 +76,91 @@ class _FirstState extends State<First> {
               )),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GetBuilder<CountController>(
-              // You can initialize your controller here the first time. Don't use init in your other GetBuilders of same controller
-              // GetX/Obx is reactive (s treams) while GetBuilder only rebuilds on update()
-              builder: (s) => Text(
-                'Current Count Value: ${s.count}',
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GetBuilder<CountController>(
+                // You can initialize your controller here the first time. Don't use init in your other GetBuilders of same controller
+                // GetX/Obx is reactive (s treams) while GetBuilder only rebuilds on update()
+                builder: (s) => Text(
+                  'Current Count Value: ${s.count}',
+                ),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            GetX<UserController>(
-              init:
-                  UserController(), // can initialize inside GetX instead of .put
-              builder: (_) => Text('Name: ${_.user.value.name}'),
-            ),
-            Obx(
-              //Obx is very similar to GetX except 'lighter' so no parameters for init, dispose, etc
-              () => Text(
-                  'Stored Count: ${Get.find<UserController>().user.value.count}'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              child: Text("Update Name & Stored Count"),
-              onPressed: () {
-                getData();
-                Get.find<UserController>().updateUser(Get.find<
-                        CountController>()
-                    .count); //using Get.find locates the controller that was created in 'init' in GetX
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              child: Text('Next Screen'),
-              onPressed: () {
-                Get.toNamed("/second");
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              child: Text('Named route with parameters'),
-              onPressed: () {
-                Get.toNamed(
-                    "/new?name=${Get.find<UserController>().user().name}&count=${Get.find<CountController>().count}");
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              child: Text('Other Functions'),
-              onPressed: () {
-                Get.toNamed("/other");
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              child: Text('testing State Management'),
-              onPressed: () {
-                Get.to(() => NewPage());
-              },
-            ),
-          ],
+              SizedBox(
+                height: 40,
+              ),
+              GetX<UserController>(
+                init:
+                    UserController(), // can initialize inside GetX instead of .put
+                builder: (_) => Text('Name: ${_.user.value.name}'),
+              ),
+              Obx(
+                //Obx is very similar to GetX except 'lighter' so no parameters for init, dispose, etc
+                () => Text(
+                    'Stored Count: ${Get.find<UserController>().user.value.count}'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text("Update Name & Stored Count"),
+                onPressed: () {
+                  getData();
+                  Get.find<UserController>().updateUser(Get.find<
+                          CountController>()
+                      .count); //using Get.find locates the controller that was created in 'init' in GetX
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('Next Screen'),
+                onPressed: () {
+                  Get.toNamed("/second");
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('Api Call'),
+                onPressed: () {
+                  Get.to(() => ApiCall());
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('Named route with parameters'),
+                onPressed: () {
+                  Get.toNamed(
+                      "/new?name=${Get.find<UserController>().user().name}&count=${Get.find<CountController>().count}");
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('Other Functions'),
+                onPressed: () {
+                  Get.toNamed("/other");
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text('testing State Management'),
+                onPressed: () {
+                  Get.to(() => NewPage());
+                },
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
