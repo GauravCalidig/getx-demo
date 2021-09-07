@@ -27,11 +27,13 @@ class _FirstState extends State<First> {
     }
   }
 
-  final CountController countController = Get.put(CountController());
+  final CountController countController =
+      Get.put(CountController(), permanent: true);
 
-  final UserController userController = Get.put(UserController());
+  final UserController userController =
+      Get.put(UserController(), permanent: true);
 
-  final NewController newController = Get.put(NewController());
+  final NewController newController = Get.put(NewController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
