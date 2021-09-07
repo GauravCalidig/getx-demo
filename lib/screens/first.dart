@@ -4,9 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:getx/controllers/countController.dart';
 import 'package:getx/controllers/sumController.dart';
 import 'package:getx/controllers/userController.dart';
-import 'package:getx/screens/Other%20Functions.dart';
 import 'package:getx/screens/new.dart';
-import 'package:getx/screens/second.dart';
 
 class First extends StatefulWidget {
   @override
@@ -119,7 +117,7 @@ class _FirstState extends State<First> {
             ElevatedButton(
               child: Text('Next Screen'),
               onPressed: () {
-                Get.to(() => Second());
+                Get.toNamed("/second");
               },
             ),
             SizedBox(
@@ -138,7 +136,7 @@ class _FirstState extends State<First> {
             ElevatedButton(
               child: Text('Other Functions'),
               onPressed: () {
-                Get.to(() => Others());
+                Get.toNamed("/other");
               },
             ),
             SizedBox(
