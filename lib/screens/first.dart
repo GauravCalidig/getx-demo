@@ -81,7 +81,7 @@ class _FirstState extends State<First> {
           children: [
             GetBuilder<CountController>(
               // You can initialize your controller here the first time. Don't use init in your other GetBuilders of same controller
-              // GetX/Obx is reactive (streams) while GetBuilder only rebuilds on update()
+              // GetX/Obx is reactive (s treams) while GetBuilder only rebuilds on update()
               builder: (s) => Text(
                 'Current Count Value: ${s.count}',
               ),
