@@ -22,9 +22,10 @@ class _FirstState extends State<First> {
 
   getData() async {
     var x = await datacount.read("cart");
-    print(datacount.read("cart"));
-    print(x.runtimeType);
-    Get.find<NewController>().list.addAll(x);
+    if (x != null) {
+      Get.snackbar("Cart Data Loaded", "${x.length} items in Cart");
+      Get.find<NewController>().list.addAll(x);
+    }
   }
 
   final CountController countController = Get.put(CountController());

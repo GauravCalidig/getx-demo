@@ -33,7 +33,6 @@ class NewPage extends StatelessWidget {
                 () => Text('Tap Count: ${Get.find<NewController>().count}'),
               ),
             ),
-            Text("debouncing count every 1 second")
           ],
         ),
       ),
