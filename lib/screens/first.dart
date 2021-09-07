@@ -107,7 +107,6 @@ class _FirstState extends State<First> {
               ElevatedButton(
                 child: Text("Update Name & Stored Count"),
                 onPressed: () {
-                  getData();
                   Get.find<UserController>().updateUser(Get.find<
                           CountController>()
                       .count); //using Get.find locates the controller that was created in 'init' in GetX

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:getx/screens/FakeCart.dart';
 import 'package:getx/screens/Other%20Functions.dart';
 import 'package:getx/screens/cartItems.dart';
 import 'package:getx/screens/first.dart';
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
             name: "/cart",
             page: () => CartItems(),
             transition: Transition.zoom),
+        GetPage(
+            name: "/testCart",
+            page: () => FakeCart(),
+            transition: Transition.fadeIn),
       ],
       locale: LocalizationService.locale,
       fallbackLocale: LocalizationService.fallbackLocale,
