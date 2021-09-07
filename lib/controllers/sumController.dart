@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+final datacount = GetStorage();
 
 class SumController extends GetxController {
   final count1 = 0.obs;
@@ -39,11 +41,19 @@ class NewController extends GetxController {
   final list = [].obs;
 
   addText(text) {
-    list.add(Text(text));
+    list.add(text);
+    datacount.write("cart", list);
+    print(datacount.read("cart"));
   }
 
   increment(text) {
     count.value++;
+    addText("Product $count");
+    if (!Get.isSnackbarOpen!)
+      Get.snackbar("Product $count", "Added to cart",
+          snackPosition: SnackPosition.TOP, onTap: (e) {
+        Get.toNamed("/cart");
+      });
   }
 
   @override
@@ -57,10 +67,7 @@ class NewController extends GetxController {
     once(count, (_) => print("$_ was changed once"));
 
     /// Called once there has been no action on observable for 1 second
-    debounce(count, (_) {
-      addText("Product $count");
-      Get.snackbar("Product $count", "Added to cart");
-    }, time: Duration(seconds: 1));
+    debounce(count, (_) {}, time: Duration(seconds: 1));
 
     /// Only reads the observable every 1 second
     interval(count, (_) => print("interval $_"), time: Duration(seconds: 1));

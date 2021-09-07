@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:getx/controllers/countController.dart';
 import 'package:getx/controllers/sumController.dart';
 import 'package:getx/controllers/userController.dart';
@@ -7,10 +8,33 @@ import 'package:getx/screens/Other%20Functions.dart';
 import 'package:getx/screens/new.dart';
 import 'package:getx/screens/second.dart';
 
-class First extends StatelessWidget {
+class First extends StatefulWidget {
+  @override
+  _FirstState createState() => _FirstState();
+}
+
+class _FirstState extends State<First> {
+  final datacount = GetStorage();
+  @override
+  void initState() {
+    super.initState();
+
+    getData();
+  }
+
+  getData() async {
+    var x = await datacount.read("cart");
+    print(datacount.read("cart"));
+    print(x.runtimeType);
+    Get.find<NewController>().list.addAll(x);
+  }
+
   final CountController countController = Get.put(CountController());
+
   final UserController userController = Get.put(UserController());
+
   final NewController newController = Get.put(NewController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +107,7 @@ class First extends StatelessWidget {
             ElevatedButton(
               child: Text("Update Name & Stored Count"),
               onPressed: () {
+                getData();
                 Get.find<UserController>().updateUser(Get.find<
                         CountController>()
                     .count); //using Get.find locates the controller that was created in 'init' in GetX

@@ -25,7 +25,7 @@ class NewPage extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       var item = Get.find<NewController>().list[index];
                       return ListTile(
-                          leading: Icon(Icons.shopping_bag), title: item);
+                          leading: Icon(Icons.shopping_bag), title: Text(item));
                     })),
             Container(
               child: Obx(
